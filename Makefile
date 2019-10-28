@@ -1,6 +1,6 @@
 .PHONY: reset kill up down cons irb
 
-all: pre build
+all: build
 
 pre:
 	rm -rvf Gemfile*
@@ -10,16 +10,14 @@ pre:
 
 build:
 	$(MAKE) pre
-	docker-compose run web rails new . --force --no-deps --database=postgresql
+	docker-compose run web rails new . --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
-	[ -d tmp/db ] || mkdir tmp/db
-	sudo chmod -R 777 tmp/db/
-	cp database.yml config/
+	mv database.yml config/
 	docker-compose build
 	docker-compose up -d
 	docker-compose run web rake db:create
 	docker-compose down
-	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.' 
+	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
 
 reset:
 	git clean -f -d -x
