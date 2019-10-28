@@ -2,6 +2,8 @@
 
 all: pre build
 
+DB=mysql
+
 pre:
 	rm -rvf Gemfile*
 	echo "source 'https://rubygems.org'" > Gemfile
@@ -10,16 +12,16 @@ pre:
 
 build:
 	$(MAKE) pre
-	docker-compose run web rails new . --force --no-deps --database=postgresql
+	docker-compose run web rails new . --force --no-deps --database=$(DB)
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	[ -d tmp/db ] || mkdir tmp/db
 	sudo chmod -R 777 tmp/db/
-	cp database.yml config/
+	cp setup-config/db/$(DB).yml config/database.yml
 	docker-compose build
 	docker-compose up -d
 	docker-compose run web rake db:create
 	docker-compose down
-	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.' 
+	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
 
 reset:
 	git clean -f -d -x
