@@ -22,6 +22,7 @@ reset:
 	git clean -f -d -x
 
 kill:
+	docker-compose down --remove-orphans
 	docker system prune --force
 	docker image prune -a --force
 
