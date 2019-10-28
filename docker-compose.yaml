@@ -9,8 +9,6 @@ services:
     ports:
       - "33069:3306"
     restart: always
-    volumes:
-      - ./tmp/db:/var/lib/mysql
 
   web:
     build: .
