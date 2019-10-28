@@ -19,6 +19,7 @@ build:
 	docker-compose up -d
 	docker-compose run web rake db:create
 	docker-compose down
+	echo 'PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.' 
 
 reset:
 	git clean -f -d -x
