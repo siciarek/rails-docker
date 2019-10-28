@@ -12,9 +12,9 @@ build:
 	$(MAKE) pre
 	docker-compose run web rails new . --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
+	mv database.yml config/
 	[ -d tmp/db ] || mkdir tmp/db
 	sudo chmod -R 777 tmp/db/
-	mv database.yml config/database.yml
 	docker-compose build
 	docker-compose up -d
 	docker-compose run web rake db:create
