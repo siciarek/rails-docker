@@ -1,8 +1,6 @@
 .PHONY: reset kill up down cons irb
 
-all: pre build
-
-DB=mysql
+all: build
 
 pre:
 	rm -rvf Gemfile*
@@ -12,7 +10,7 @@ pre:
 
 build:
 	$(MAKE) pre
-	docker-compose run web rails new . --force --no-deps --database=$(DB)
+	docker-compose run web rails new . --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	[ -d tmp/db ] || mkdir tmp/db
 	sudo chmod -R 777 tmp/db/
