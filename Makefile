@@ -16,7 +16,7 @@ build:
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	[ -d tmp/db ] || mkdir tmp/db
 	sudo chmod -R 777 tmp/db/
-	cp setup-config/db/$(DB).yml config/database.yml
+	mv database.yml config/database.yml
 	docker-compose build
 	docker-compose up -d
 	docker-compose run web rake db:create
