@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: rootpasswd
+  host: db_mysql
+  port: 3306
+
+production:
+  <<: *default
+  database: myapp
+
+development:
+  <<: *default
+  database: myapp_development
+
+test:
+  <<: *default
+  database: myapp_test
