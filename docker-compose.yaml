@@ -6,7 +6,7 @@ services:
       MYSQL_DATABASE: myapp
       MYSQL_ROOT_PASSWORD: rootpasswd
     ports:
-      - "33067:3306"
+      - "33069:3306"
     restart: always
     volumes:
       - mysql:/var/lib/mysql
