@@ -10,12 +10,12 @@ pre:
 
 build:
 	$(MAKE) pre
-	docker-compose run web rails new . --force --no-deps --database=mysql
+	docker-compose run app rails new . --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	mv database.yml config/
 	docker-compose build
 	docker-compose up -d
-	docker-compose run web rake db:create
+	docker-compose run app rake db:create
 	docker-compose down
 	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
 
@@ -27,13 +27,13 @@ kill:
 	docker image prune -a --force
 
 up:
-	docker-compose up --build --remove-orphans
+	docker-compose up
 
 down:
 	docker-compose down
 
 cons:
-	docker-compose run web bin/rails console
+	docker-compose run app bin/rails console
 
 irb:
-	docker-compose run web irb
+	docker-compose run app irb
