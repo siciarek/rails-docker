@@ -1,5 +1,12 @@
 # Rails REST API
 
+## Init
+
+```bash
+curl http://siciarek.pl/it/rails-docker/install.sh | bash
+```
+
+
 ## Create sample model `Product`
 
 ```bash
