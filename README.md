@@ -3,7 +3,7 @@
 ## Init
 
 ```bash
-curl http://siciarek.pl/it/rails-docker/install.sh | bash
+curl http://siciarek.pl/it/rails-docker/setup.sh | bash
 ```
 
 
