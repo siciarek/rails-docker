@@ -7,6 +7,8 @@ services:
       MYSQL_ROOT_PASSWORD: rootpasswd
     ports:
       - "33069:3306"
+    volumes:
+      - mysql:/var/lib/mysql
 
   app:
     build: .
@@ -19,3 +21,6 @@ services:
       - "3000:3000"
     depends_on:
       - db
+
+volumes:
+  mysql:

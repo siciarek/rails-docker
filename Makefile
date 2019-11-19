@@ -6,11 +6,13 @@ pre:
 	rm -rvf Gemfile*
 	echo "source 'https://rubygems.org'" > Gemfile
 	echo "gem 'rails', '~>5'" >> Gemfile
+	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
+	echo "gem 'bson_ext'" >> Gemfile
 	touch Gemfile.lock
 
 build:
 	$(MAKE) pre
-	docker-compose run app rails new . --force --no-deps --database=mysql
+	docker-compose run app rails new . --api --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	mv database.yml config/
 	docker-compose up --build --remove-orphans -d
