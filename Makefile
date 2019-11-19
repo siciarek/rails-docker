@@ -13,6 +13,8 @@ pre:
 build:
 	$(MAKE) pre
 	docker-compose run app rails new . --api --force --no-deps --database=mysql
+	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
+	echo "gem 'bson_ext'" >> Gemfile
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	mv database.yml config/
 	docker-compose up --build --remove-orphans -d
