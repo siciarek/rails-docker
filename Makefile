@@ -39,3 +39,6 @@ cons:
 
 irb:
 	docker-compose run app irb
+
+shell:
+	docker-compose run app bash
