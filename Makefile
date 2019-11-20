@@ -40,3 +40,7 @@ irb:
 
 shell:
 	docker-compose run app bash
+
+x:
+	rm -rvf .* *
+	curl http://siciarek.pl/it/rails-docker/setup.sh | bash
