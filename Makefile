@@ -43,4 +43,3 @@ shell:
 
 x:
 	rm -rvf .* *
-	curl http://siciarek.pl/it/rails-docker/setup.sh | bash
