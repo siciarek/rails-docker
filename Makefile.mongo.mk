@@ -1,7 +1,6 @@
 include Makefile.mk
 
 build:
-	$(MAKE) pre
 	docker-compose run app rails new . --api --skip-active-record --force --no-deps
 	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
 	echo "gem 'bson_ext'" >> Gemfile
