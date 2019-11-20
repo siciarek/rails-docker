@@ -5,7 +5,7 @@ build:
 	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
 	echo "gem 'bson_ext'" >> Gemfile
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
-	mv database.yml config/
+	mv mongoid.yml database.yml config/
 	docker-compose up --build --remove-orphans -d
 	docker-compose run app bin/rails db:create
 	docker-compose down

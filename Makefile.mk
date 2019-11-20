@@ -9,7 +9,6 @@ pre:
 	touch Gemfile.lock
 
 build:
-	$(MAKE) pre
 	docker-compose run app rails new . --api --force --no-deps --database=mysql
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	mv database.yml config/
