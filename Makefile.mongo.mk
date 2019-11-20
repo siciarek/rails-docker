@@ -5,9 +5,9 @@ build:
 	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
 	echo "gem 'bson_ext'" >> Gemfile
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
-	mv mongoid.yml database.yml config/
+	mv mongoid.yml config/
+	rm database.yml
 	docker-compose up --build --remove-orphans -d
 	docker-compose down
-	docker-compose run app bin/rails g mongoid:config
 	docker-compose run app bin/rails g scaffold article name:string content:text
-	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
+	@echo 'YOUR MongoDB PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
