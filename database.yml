@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   username: root
   password: rootpasswd
-  host: db
+  host: mysqlsrv
   port: 3306
 
 production:
