@@ -2,7 +2,7 @@ include Makefile
 
 build:
 	$(MAKE) pre
-	docker-compose run app rails new . --api --skip-active-record --force --no-deps --database=mysql
+	docker-compose run app rails new . --api --skip-active-record --force --no-deps
 	echo "gem 'mongoid', '~> 6.0'" >> Gemfile
 	echo "gem 'bson_ext'" >> Gemfile
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
