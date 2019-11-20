@@ -1,12 +1,4 @@
-.PHONY: reset kill up down cons irb
-
-all: build
-
-pre:
-	rm -rvf Gemfile*
-	echo "source 'https://rubygems.org'" > Gemfile
-	echo "gem 'rails', '~>5'" >> Gemfile
-	touch Gemfile.lock
+include Makefile
 
 build:
 	$(MAKE) pre
@@ -21,26 +13,3 @@ build:
 	docker-compose run app bin/rails g mongoid:config
 	docker-compose run app bin/rails g scaffold article name:string content:text
 	@echo 'YOUR PROJECT TEMPLATE HAS BEEN CREATED SUCCESSFULLY.'
-
-reset:
-	git clean -f -d -x
-
-kill:
-	docker-compose down --remove-orphans
-	docker system prune --force
-	docker image prune -a --force
-
-up:
-	docker-compose up
-
-down:
-	docker-compose down
-
-cons:
-	docker-compose run app bin/rails console
-
-irb:
-	docker-compose run app irb
-
-shell:
-	docker-compose run app bash
