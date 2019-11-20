@@ -7,7 +7,6 @@ build:
 	sudo chown -R ${USER}:$(shell id -gn ${USER}) .
 	mv mongoid.yml database.yml config/
 	docker-compose up --build --remove-orphans -d
-	docker-compose run app bin/rails db:create
 	docker-compose down
 	docker-compose run app bin/rails g mongoid:config
 	docker-compose run app bin/rails g scaffold article name:string content:text
