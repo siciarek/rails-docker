@@ -4,6 +4,7 @@
 
 ```bash
 curl http://siciarek.pl/it/rails-docker/setup.sh | bash
+make -f Makefile.mongo.mk
 ```
 
 
