@@ -1,4 +1,4 @@
-include Makefile
+include Makefile.mk
 
 build:
 	$(MAKE) pre
