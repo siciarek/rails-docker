@@ -1,6 +1,6 @@
 .PHONY: reset kill up down cons irb
 
-all: build
+all: pre build
 
 pre:
 	rm -rvf Gemfile*
